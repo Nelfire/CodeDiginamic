@@ -22,23 +22,41 @@ import projPOO01.GestionPersonnes.Salarie;
  */
 public class TestSaisies {
 
+	/** cpf */
 	private final String cpf = "698400";
+	/** cpf1 */
 	private final String cpf1 = "60cde";
+	/** cpt */
 	private final String cpt = "69100";
+	/** nsf */
 	private final String nsf = "12345678901234";
+	/** nsf1 */
 	private final String nsf1 = "123abcd890123";
+	/** nst */
 	private final String nst = "1234567890123";
+	/** flist */
 	private ArrayList<Fournisseur> flist;
+	/** f */
 	private Fournisseur f;
+	/** ofnumunique */
 	private final Integer ofnumunique = 1;
+	/** fnumuniquef */
 	private final String fnumuniquef = "1";
+	/** fnumuniquef1 */
 	private final String fnumuniquef1 = "a";
+	/** fnumuniquet */
 	private final String fnumuniquet = "2";
+	/** clist */
 	private ArrayList<Client> clist;
+	/** c */
 	private Client c;
+	/** ocnumunique */
 	private final Integer ocnumunique = 1;
+	/** cnumuniquef */
 	private final String cnumuniquef = "1";
+	/** cnumuniquef1 */
 	private final String cnumuniquef1 = "a";
+	/** cnumuniquet */
 	private final String cnumuniquet = "2";
 
 	@Before

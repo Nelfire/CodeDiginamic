@@ -14,6 +14,7 @@ import projPOO01.GestionAchat.Achat;
 import projPOO01.GestionAchat.commande;
 import projPOO01.GestionPersonnes.Client;
 import projPOO01.GestionPersonnes.Fournisseur;
+import projPOO01.GestionPersonnes.Interimaire;
 import projPOO01.GestionPersonnes.Patron;
 import projPOO01.GestionPersonnes.Personne;
 import projPOO01.GestionPersonnes.Salarie;
@@ -21,9 +22,11 @@ import projPOO01.Menu.Menus;
 
 public class Saisir {
 	public static Patron patron = new Patron();
+	public static Interimaire interimaire = new Interimaire();
 	public static ArrayList<Personne> listclient = new ArrayList<Personne>();
 	public static ArrayList<Personne> listsalarie = new ArrayList<Personne>();
 	public static ArrayList<Personne> listfournisseur = new ArrayList<Personne>();
+	public static ArrayList<Personne> listInterimaire = new ArrayList<Personne>();
 
 	public static void SaisirAll() {
 
@@ -34,6 +37,9 @@ public class Saisir {
 		Menus.Menu();
 	}
 
+	/**
+	 * Saisie d'un patron
+	 */
 	public static void SaisirPatron() {
 		boolean erreurcp;
 		boolean erreurns;
@@ -89,6 +95,148 @@ public class Saisir {
 		}
 	}
 
+	/**
+	 * Saisie d'un interimaire
+	 * 
+	 * @throws Exception
+	 */
+	public static void SaisirInterimaire() throws Exception {
+//		boolean erreurcp;
+//		boolean erreurns;
+//		System.out.println("Saisir le nom de l'intérimaire");
+//		interimaire.setNom(Menus.sc.next());
+//		System.out.println("Saisir le prenom de l'intérimaire");
+//		interimaire.setPrenom(Menus.sc.next());
+//		System.out.println("Saisir l'adresse de l'intérimaire");
+//		interimaire.setAdresse(Menus.sc.next());
+//		System.out.println("Saisir la ville de l'intérimaire");
+//		interimaire.setVille(Menus.sc.next());
+//		erreurcp = true;
+//		while (erreurcp) {
+//			try {
+//				System.out.println("Saisir le codepostal de l'intérimaire");
+//				interimaire.setCodepostal(Menus.sc.next());
+//				Salarie.CtrlCodePostal(interimaire.getCodepostal());
+//				erreurcp = false;
+//			} catch (ExceptionSaisieCodePostal e) {
+//				// TODO Auto-generated catch block
+//
+//				System.out.println(e.getMessage());
+//			}
+//		}
+//
+//		erreurns = true;
+//		while (erreurns) {
+//			try {
+//				System.out.println("Saisir le numero de sécurité sociale de l'interimaire");
+//				interimaire.setSecu(Menus.sc.next());
+//				Salarie.CtrlSaisiNumeroSecu(interimaire.getSecu());
+//				erreurns = false;
+//			} catch (ExceptionSaisiNumeroSecu e) {
+//				// TODO Auto-generated catch block
+//				System.out.println(e.getMessage());
+//			}
+//		}
+//
+//		System.out.println("Saisir le salaire de l'intérimaire");
+//		while (Menus.sc.hasNext()) {
+//
+//			if (Menus.sc.hasNextDouble()) {
+//				interimaire.setSalaire(Menus.sc.nextDouble());
+//				break;
+//			} else {
+//				System.out.println("Saisir le salaire de l'intérimaire");
+//				Menus.sc.next();
+//			}
+//
+//		}
+//		if (Menus.choixmenu != 1) {
+//			Menus.Menu();
+//		}
+
+		ArrayList<Interimaire> sl = new ArrayList<Interimaire>();
+		String nom, prenom, adresse, ville, nomAgence, codepostal = "", secu = null;
+		int duree = 0;
+		double salaire = 0;
+		boolean erreurcp = true;
+		boolean erreurns = true;
+
+		for (int i = 0; i < 2; i++) {
+			System.out.println("Saisir le nom de l'intérimaire");
+			nom = Menus.sc.next();
+			System.out.println("Saisir le prenom de l'intérimaire");
+			prenom = Menus.sc.next();
+			System.out.println("Saisir l'adresse de l'intérimaire");
+			adresse = Menus.sc.next();
+			System.out.println("Saisir la ville de l'intérimaire");
+			ville = Menus.sc.next();
+			System.out.println("Saisir le nom de l'agence d'interim");
+			nomAgence = Menus.sc.next();
+			if (nomAgence.length() < 5) {
+				throw new Exception("Nom doit être superieur a 5 de longueur");
+			}
+			System.out.println("Saisir la durée de l'interim");
+			duree = Menus.sc.nextInt();
+			if (duree < 1) {
+				throw new Exception("Durée doit être supérieure a 1 mois");
+			}
+			erreurcp = true;
+			while (erreurcp) {
+				try {
+					System.out.println("Saisir le codepostal de l'intérimaire");
+					codepostal = Menus.sc.next();
+					Interimaire.CtrlCodePostal(codepostal);
+					erreurcp = false;
+				} catch (ExceptionSaisieCodePostal e) {
+					// TODO Auto-generated catch block
+
+					System.out.println(e.getMessage());
+				}
+			}
+
+			erreurns = true;
+			while (erreurns) {
+				try {
+					System.out.println("Saisir le numero de sécurité sociale de l'intérimaire");
+					secu = Menus.sc.next();
+					Interimaire.CtrlSaisiNumeroSecu(secu);
+					erreurns = false;
+				} catch (ExceptionSaisiNumeroSecu e) {
+					// TODO Auto-generated catch block
+					System.out.println(e.getMessage() + " " + secu.length());
+				}
+			}
+
+			salaire = 0;
+			System.out.println("Saisir le salaire de l'intérimaire");
+			while (Menus.sc.hasNext() && salaire == 0) {
+
+				if (Menus.sc.hasNextDouble()) {
+					salaire = Menus.sc.nextDouble();
+					break;
+				} else {
+					System.out.println("Saisir le salaire de l'intérimaire");
+					Menus.sc.next();
+				}
+
+			}
+
+			Interimaire interimaire = new Interimaire(nom, prenom, adresse, ville, codepostal, secu, salaire, nomAgence,
+					duree);
+
+			sl.add(interimaire);
+		}
+
+		listInterimaire = new ArrayList<Personne>(sl);
+		if (Menus.choixmenu != 1) {
+			Menus.Menu();
+		}
+		return;
+	}
+
+	/**
+	 * Saisie d'un salarié
+	 */
 	public static void SaisirSalarie() {
 
 		ArrayList<Salarie> sl = new ArrayList<Salarie>();
@@ -159,6 +307,9 @@ public class Saisir {
 		return;
 	}
 
+	/**
+	 * Saisie d'un client
+	 */
 	public static void SaisirClient() {
 
 		ArrayList<Client> cl = new ArrayList<Client>();

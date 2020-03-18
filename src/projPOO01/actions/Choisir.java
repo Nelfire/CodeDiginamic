@@ -11,6 +11,7 @@ import projPOO01.Menu.Menus;
 public class Choisir {
 	/**
 	 * Methode permettant d'afficher et de choisir un IClient
+	 * 
 	 * @param listc liste de IClient
 	 * @return IClient choisi par l'utilisateur
 	 */
@@ -18,53 +19,55 @@ public class Choisir {
 		System.out.println("choix du client :");
 		String choix = null;
 		boolean erreurint = true;
-		for(IClient c:listc) {
-			
-			System.out.println("Taper : " +listc.indexOf(c)+ " pour choisir : " + c.toString() );
+		for (IClient c : listc) {
+
+			System.out.println("Taper : " + listc.indexOf(c) + " pour choisir : " + c.toString());
 		}
-		
-		 erreurint=true;
-		while(erreurint) {
+
+		erreurint = true;
+		while (erreurint) {
 			try {
 				choix = Menus.sc.next();
 				Controles.CtrlInt(choix);
-				erreurint=false;
-				
-			}catch(ExceptionInt e) {
+				erreurint = false;
+
+			} catch (ExceptionInt e) {
 				System.out.println(e.getMessage());
 			}
 		}
-		
-		
+
 		IClient c = listc.get(Integer.parseInt(choix));
-		
+
 		return c;
 	}
-	
+
+	/**
+	 * @param Une liste de IFournisseur
+	 * @return IFournisseur
+	 */
 	public static IFournisseur ChoisirIFournisseur(List<IFournisseur> listf) {
 		System.out.println("choix du fournisseur :");
 		String choix = null;
 		boolean erreurint = true;
-		for(IFournisseur f:listf) {
-			
-			System.out.println("Taper : " +listf.indexOf(f)+ " pour choisir : " + f.toString() );
+		for (IFournisseur f : listf) {
+
+			System.out.println("Taper : " + listf.indexOf(f) + " pour choisir : " + f.toString());
 		}
-		
-		 erreurint=true;
-		while(erreurint) {
+
+		erreurint = true;
+		while (erreurint) {
 			try {
 				choix = Menus.sc.next();
 				Controles.CtrlInt(choix);
-				erreurint=false;
-				
-			}catch(ExceptionInt e) {
+				erreurint = false;
+
+			} catch (ExceptionInt e) {
 				System.out.println(e.getMessage());
 			}
 		}
-		
-		
+
 		IFournisseur f = listf.get(Integer.parseInt(choix));
-		
+
 		return f;
 	}
 }

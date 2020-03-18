@@ -4,7 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -16,33 +15,41 @@ import org.junit.Test;
 import projPOO01.GestionAchat.Achat;
 import projPOO01.GestionPersonnes.Client;
 
-
+/**
+ * Test unitaire du client
+ * 
+ * @author 20-100
+ *
+ */
 public class TestClient {
-	
+
 	private Client c;
 	private Achat a;
-	private final String ointitule ="intitule";
-	private final Integer oqte= new Integer(10);
+	private final String ointitule = "intitule";
+	private final Integer oqte = new Integer(10);
 	private final Date od = new Date();
-	private final String onom ="Personne";
-	private final String oprenom ="Test";
-	private final String oville ="Lyon";
-	private final String oadresse ="Rue";
-	private final String ocodepostal ="69000";
+	private final String onom = "Personne";
+	private final String oprenom = "Test";
+	private final String oville = "Lyon";
+	private final String oadresse = "Rue";
+	private final String ocodepostal = "69000";
 	private final int oidclient = 1;
 	private final int setidclient = 10;
 	private List<Achat> achats = new ArrayList<Achat>();
-	private final String ts= "Client [nom=" + onom + ", prenom=" + oprenom + ", adresse=" + oadresse + ", ville=" + oville
-			+ ", codepostal=" + ocodepostal + "]" + "[idclient=" + oidclient + ", achats=" + achats.toString()+"]";
+	private final String ts = "Client [nom=" + onom + ", prenom=" + oprenom + ", adresse=" + oadresse + ", ville="
+			+ oville + ", codepostal=" + ocodepostal + "]" + "[idclient=" + oidclient + ", achats=" + achats.toString()
+			+ "]";
 
-	
 	@Before
 	public void init() {
 		c = new Client(onom, oprenom, oadresse, oville, ocodepostal, oidclient);
-		a = new Achat(od,ointitule,oqte);
+		a = new Achat(od, ointitule, oqte);
 		achats.add(a);
 	}
-	
+
+	/**
+	 * 
+	 */
 	@Test
 	public void testToString() {
 		assertEquals(ts, c.toString());
@@ -52,12 +59,12 @@ public class TestClient {
 	public void testClient() {
 		assertNotNull(c);
 	}
-	
+
 	@Test
 	public void testGetAchat() {
 		this.testAchete();
-		assertEquals(achats,c.getAchats());
-		
+		assertEquals(achats, c.getAchats());
+
 	}
 
 	@Test
@@ -68,7 +75,7 @@ public class TestClient {
 	@Test
 	public void testSetIdclient() {
 		c.setIdclient(setidclient);
-		assertEquals(setidclient,c.getIdclient());
+		assertEquals(setidclient, c.getIdclient());
 	}
 
 	@Test
@@ -101,7 +108,5 @@ public class TestClient {
 	public void testIsFournisseur() {
 		assertFalse(c.isFournisseur());
 	}
-
-
 
 }
