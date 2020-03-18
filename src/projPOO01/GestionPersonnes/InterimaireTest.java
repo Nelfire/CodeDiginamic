@@ -2,6 +2,7 @@ package projPOO01.GestionPersonnes;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.fail;
 
 import java.text.DecimalFormat;
 
@@ -79,26 +80,26 @@ public class InterimaireTest {
 	}
 
 	// pas fini
-//	/**
-//	 * Test duree 2 mois
-//	 */
-//	@Test
-//	public void testSetDuree() {
-//		try {
-//			assertEquals(2, duree);
-//		} catch (Exception e) {
-//			fail();
-//		}
-//	}
-//
-//	/**
-//	 * Cas periode < 1 mois
-//	 * 
-//	 * @throws Exception
-//	 */
-//	@Test(expected = Exception.class)
-//	public void testSetDureeErreur() throws Exception {
-//		assertEquals(1, duree);
-//	}
+	/**
+	 * Test duree 2 mois
+	 */
+	@Test
+	public void testSetDuree() {
+		try {
+			assertEquals(2, duree);
+		} catch (Exception e) {
+			fail();
+		}
+	}
+
+	/**
+	 * Cas periode < 1 mois
+	 * 
+	 * @throws Exception
+	 */
+	@Test(expected = Exception.class)
+	public void testSetDureeErreur() throws Exception {
+		assertEquals(1, duree);
+	}
 
 }
